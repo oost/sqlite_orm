@@ -703,16 +703,16 @@ To manage in memory database just provide `:memory:` or `""` instead as filename
 
 # Comparison with other C++ libs
 
-|   |sqlite_orm|[SQLiteCpp](https://github.com/SRombauts/SQLiteCpp)|[hiberlite](https://github.com/paulftw/hiberlite)|[ODB](https://www.codesynthesis.com/products/odb/)|
-|---|:---:|:---:|:---:|:---:|
-|Schema sync|yes|no|yes|no|
-|Single responsibility principle|yes|yes|no|no|
-|STL compatible|yes|no|no|no|
-|No raw string queries|yes|no|yes|yes|
-|Transactions|yes|yes|no|yes|
-|Custom types binding|yes|no|yes|yes|
-|Doesn't use macros and/or external codegen scripts|yes|yes|no|no|
-|Aggregate functions|yes|yes|no|yes|
+|                                                    | sqlite_orm | [SQLiteCpp](https://github.com/SRombauts/SQLiteCpp) | [hiberlite](https://github.com/paulftw/hiberlite) | [ODB](https://www.codesynthesis.com/products/odb/) |
+| -------------------------------------------------- | :--------: | :-------------------------------------------------: | :-----------------------------------------------: | :------------------------------------------------: |
+| Schema sync                                        |    yes     |                         no                          |                        yes                        |                         no                         |
+| Single responsibility principle                    |    yes     |                         yes                         |                        no                         |                         no                         |
+| STL compatible                                     |    yes     |                         no                          |                        no                         |                         no                         |
+| No raw string queries                              |    yes     |                         no                          |                        yes                        |                        yes                         |
+| Transactions                                       |    yes     |                         yes                         |                        no                         |                        yes                         |
+| Custom types binding                               |    yes     |                         no                          |                        yes                        |                        yes                         |
+| Doesn't use macros and/or external codegen scripts |    yes     |                         yes                         |                        no                         |                         no                         |
+| Aggregate functions                                |    yes     |                         yes                         |                        no                         |                        yes                         |
 
 # Notes
 
@@ -728,3 +728,8 @@ Just put `include/sqlite_orm/sqlite_orm.h` into you folder with headers. Also it
 
 * C++14 compatible compiler (not C++11 cause of templated lambdas in the lib).
 * libsqlite3 linked to your binary
+
+# Build the header
+
+Run the following from the project root dir and it will generate `include/sqlite_orm/sqlite_orm.h` from the individual headers in `dev/`:
+`python third_party/amalgamate/amalgamate.py -c third_party/amalgamate/config.json -s .`
